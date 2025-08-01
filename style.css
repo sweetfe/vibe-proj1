@@ -1,18 +1,32 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f3f0;
-  color: #333;
-  margin: 40px;
+    font-family: 'Cinzel Decorative', serif;
+    background-color: #f9f3f0;
+    color: #333;
+    margin: 40px;
 }
 
 h1 {
+  font-weight: 800
   color: #d89a9a;
   text-align: center;
 }
-
+h2 {
+  font-weight: 600
+}
 img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 20px auto;
+}
+.indent {
+    text-indent: 2em;
+  }
+.double-indent {
+    text-indent: 2em;       /* first line indent */
+    padding-left: 4em;      /* indent for all lines */
+  }
+p {
+  line-height: 1.6;
+  margin: 20px 0;
 }
