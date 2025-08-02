@@ -25,5 +25,64 @@
   
   <p>These love bites are badges of honor in the household, proof that you've been chosen by the queen herself for special affection. After all, only those she truly trusts would be worthy of such intimate gestures.</p>
   
+  <script>
+    // Function to create and animate a paw print
+    function createPawPrint() {
+      // Create paw print element
+      const pawPrint = document.createElement('div');
+      pawPrint.className = 'paw-print';
+      
+      // Random position
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+      pawPrint.style.left = startX + 'px';
+      pawPrint.style.top = startY + 'px';
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
+      pawPrint.style.transform = `rotate(${rotation}deg)`;
+      
+      // Random animation
+      const animations = ['walkDiagonal', 'walkHorizontal', 'walkVertical'];
+      const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+      pawPrint.style.animation = `${randomAnimation} 3s linear forwards`;
+      
+      // Add to page
+      document.body.appendChild(pawPrint);
+      
+      // Remove element after animation completes
+      setTimeout(() => {
+        pawPrint.remove();
+      }, 3000);
+    }
+    
+    // Function to start the paw print animation sequence
+    function startPawPrints() {
+      // Create 3-5 paw prints in quick succession
+      const numPrints = Math.floor(Math.random() * 3) + 3;
+      for (let i = 0; i < numPrints; i++) {
+        setTimeout(() => {
+          createPawPrint();
+        }, i * 300); // Stagger the prints by 300ms
+      }
+    }
+    
+    // Start the animation cycle
+    function startAnimationCycle() {
+      // Start first set of paw prints
+      startPawPrints();
+      
+      // Schedule next set of paw prints after a random delay (3-5 minutes)
+      const randomDelay = Math.floor(Math.random() * 120000) + 180000; // 3-5 minutes in ms
+      setTimeout(startAnimationCycle, randomDelay);
+    }
+    
+    // Start the animation cycle after the page loads
+    window.addEventListener('load', () => {
+      // Initial delay of 30 seconds to 1 minute before first animation
+      const initialDelay = Math.floor(Math.random() * 30000) + 30000; // 30-60 seconds in ms
+      setTimeout(startAnimationCycle, initialDelay);
+    });
+  </script>
 </body>
 </html>

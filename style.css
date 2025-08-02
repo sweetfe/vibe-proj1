@@ -70,6 +70,54 @@ img {
 h2 {
   text-align: center;
 }
+
+.paw-print {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  background-image: url('images/cat-paw.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Animation for paw prints walking diagonally */
+@keyframes walkDiagonal {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(100px, 100px);
+    opacity: 0;
+  }
+}
+
+/* Animation for paw prints walking horizontally */
+@keyframes walkHorizontal {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(150px, 0);
+    opacity: 0;
+  }
+}
+
+/* Animation for paw prints walking vertically */
+@keyframes walkVertical {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 150px);
+    opacity: 0;
+  }
+}
 .indent {
     text-indent: 2em;
   }
