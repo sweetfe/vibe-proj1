@@ -19,8 +19,11 @@ h2 {
 }
 
 a {
-  color: fuchsia;
+  color: #ff00ff;
+  /* Custom cursor - image should be 32x32px or smaller for cross-browser compatibility */
+  cursor: url('images/cat-paw.png') 16 16, pointer;
   cursor: url('images/cat-paw.png'), pointer;
+  text-decoration: underline;
 }
 img {
   max-width: 100%;
