@@ -17,6 +17,10 @@ h2 {
 .qualities-list li {
   margin: 15px 0;
 }
+
+a {
+  cursor: url('images/cat-paw.png'), pointer;
+}
 img {
   max-width: 100%;
   height: auto;
