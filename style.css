@@ -19,6 +19,7 @@ h2 {
 }
 
 a {
+  color: fuchsia;
   cursor: url('images/cat-paw.png'), pointer;
 }
 img {
