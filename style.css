@@ -36,6 +36,11 @@ img {
   max-width: 240px;
   height: auto;
 }
+
+.story-image {
+  max-width: 400px;
+  height: auto;
+}
 .indent {
     text-indent: 2em;
   }
