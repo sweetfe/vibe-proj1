@@ -21,8 +21,8 @@ h2 {
 a {
   color: #ff00ff;
   /* Custom cursor - image should be 32x32px or smaller for cross-browser compatibility */
-  cursor: url('images/pinkcatpaw.png') 16 16, pointer;
-  cursor: url('images/pinkcatpaw.png'), pointer;
+  cursor: url('images/cursor-pinkcatpaw.png') 16 16, pointer;
+  cursor: url('images/cursor-pinkcatpaw.png'), pointer;
   text-decoration: underline;
 }
 img {
@@ -30,6 +30,11 @@ img {
   height: auto;
   display: block;
   margin: 20px auto;
+}
+
+.small-image {
+  max-width: 240px;
+  height: auto;
 }
 .indent {
     text-indent: 2em;
