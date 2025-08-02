@@ -41,6 +41,13 @@ img {
   max-width: 400px;
   height: auto;
 }
+
+.story-preview {
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
 .indent {
     text-indent: 2em;
   }
