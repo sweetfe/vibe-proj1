@@ -43,6 +43,14 @@
 </div>
 </br>
  
+<!-- Paw Print Test Button -->
+<div class="paw-button-container">
+  <button id="pawTestButton" class="paw-test-button">
+    <img src="images/cat-paw.png" alt="Paw Print" class="paw-button-image">
+  </button>
+  <p class="paw-button-label">Test Paw Prints</p>
+</div>
+ 
 <script>
   // Function to create and animate a paw print
   function createPawPrint() {
@@ -117,6 +125,18 @@
       startAnimationCycle();
     }, initialDelay);
   });
+  
+  // Add event listener for paw print test button
+  // Directly attach event listener since script is at bottom of page
+  const pawTestButton = document.getElementById('pawTestButton');
+  if (pawTestButton) {
+    pawTestButton.addEventListener('click', () => {
+      console.log('Paw print test button clicked');
+      startPawPrints();
+    });
+  } else {
+    console.error('Paw test button not found');
+  }
 </script>
 </body>
 </html>
