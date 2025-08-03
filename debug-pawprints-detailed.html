@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detailed Debug Paw Prints</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #debug-console {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 20px 0;
+      height: 200px;
+      overflow-y: scroll;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    .debug-section {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #d89a9a;
+      border-radius: 5px;
+    }
+    
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      background-color: #d89a9a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Cinzel Decorative', serif;
+    }
+    
+    button:hover {
+      background-color: #c08a8a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Detailed Debug Paw Prints</h1>
+  
+  <div class="debug-section">
+    <h2>Paw Print Button</h2>
+    <p>Click the button below to test the paw print animation.</p>
+    
+    <!-- Paw Print Test Button -->
+    <div class="paw-button-container">
+      <button id="pawTestButton" class="paw-test-button">
+        <img src="images/pinkcatpaw4walking.png" alt="Paw Print" class="paw-button-image">
+      </button>
+      <p class="paw-button-label">Test Paw Prints</p>
+    </div>
+  </div>
+  
+  <div class="debug-section">
+    <h2>Debug Controls</h2>
+    <button id="testCreatePawPrint">Test Create Single Paw Print</button>
+    <button id="testStartPawPrints">Test Start Paw Prints</button>
+    <button id="clearPawPrints">Clear All Paw Prints</button>
+  </div>
+  
+  <div class="debug-section">
+    <h2>Debug Console</h2>
+    <div id="debug-console"></div>
+  </div>
+  
+  <div class="debug-section">
+    <h2>Button Status</h2>
+    <p>Button Element Found: <span id="button-status">Unknown</span></p>
+    <p>Event Listeners Attached: <span id="event-status">Unknown</span></p>
+  </div>
+  
+  <script>
+    // Debug console function
+    function debugLog(message) {
+      const consoleElement = document.getElementById('debug-console');
+      const timestamp = new Date().toLocaleTimeString();
+      consoleElement.innerHTML += `[${timestamp}] ${message}\n`;
+      consoleElement.scrollTop = consoleElement.scrollHeight;
+      console.log(message);
+    }
+    
+    // Function to create and animate a paw print
+    function createPawPrint() {
+      debugLog('Creating a paw print');
+      
+      // Create paw print element
+      const pawPrint = document.createElement('div');
+      pawPrint.className = 'paw-print';
+      debugLog('Created paw print element with class: ' + pawPrint.className);
+      
+      // Random position
+      const startX = Math.random() * (window.innerWidth - 50);
+      const startY = Math.random() * (window.innerHeight - 50);
+      pawPrint.style.left = startX + 'px';
+      pawPrint.style.top = startY + 'px';
+      debugLog('Position set to: ' + startX + ', ' + startY);
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
+      pawPrint.style.transform = `rotate(${rotation}deg)`;
+      debugLog('Rotation set to: ' + rotation);
+      
+      // Random animation
+      const animations = ['walkDiagonal', 'walkHorizontal', 'walkVertical'];
+      const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+      pawPrint.style.animation = `${randomAnimation} 3s linear forwards`;
+      debugLog('Animation set to: ' + randomAnimation);
+      
+      // Add to page
+      document.body.appendChild(pawPrint);
+      debugLog('Paw print added to page');
+      
+      // Remove element after animation completes
+      setTimeout(() => {
+        debugLog('Removing paw print');
+        if (pawPrint.parentNode) {
+          pawPrint.parentNode.removeChild(pawPrint);
+        }
+      }, 3000);
+    }
+    
+    // Function to start the paw print animation sequence
+    function startPawPrints() {
+      debugLog('Creating paw prints sequence');
+      
+      // Create 3-5 paw prints in quick succession
+      const numPrints = Math.floor(Math.random() * 3) + 3;
+      debugLog('Number of prints to create: ' + numPrints);
+      
+      for (let i = 0; i < numPrints; i++) {
+        setTimeout(() => {
+          createPawPrint();
+        }, i * 300); // Stagger the prints by 300ms
+      }
+    }
+    
+    // Add event listener for paw print test button
+    debugLog('Setting up button event listener');
+    const pawTestButton = document.getElementById('pawTestButton');
+    document.getElementById('button-status').textContent = pawTestButton ? 'Yes' : 'No';
+    
+    if (pawTestButton) {
+      pawTestButton.addEventListener('click', () => {
+        debugLog('Paw print test button clicked');
+        startPawPrints();
+      });
+      document.getElementById('event-status').textContent = 'Yes';
+      debugLog('Event listener attached successfully');
+    } else {
+      document.getElementById('event-status').textContent = 'No';
+      debugLog('ERROR: Paw test button not found');
+    }
+    
+    // Add event listeners for debug buttons
+    document.getElementById('testCreatePawPrint').addEventListener('click', () => {
+      debugLog('Manual create single paw print button clicked');
+      createPawPrint();
+    });
+    
+    document.getElementById('testStartPawPrints').addEventListener('click', () => {
+      debugLog('Manual start paw prints button clicked');
+      startPawPrints();
+    });
+    
+    document.getElementById('clearPawPrints').addEventListener('click', () => {
+      debugLog('Clear all paw prints button clicked');
+      const pawPrints = document.querySelectorAll('.paw-print');
+      pawPrints.forEach(print => {
+        if (print.parentNode) {
+          print.parentNode.removeChild(print);
+        }
+      });
+      debugLog('Cleared ' + pawPrints.length + ' paw prints');
+    });
+    
+    // Initial debug message
+    debugLog('Page loaded and debug system initialized');
+  </script>
+</body>
+</html>
