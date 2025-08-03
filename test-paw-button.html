@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Paw Button</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Test Paw Button</h1>
+  <p>Click the button below to test the paw print animation.</p>
+  
+  <!-- Paw Print Test Button -->
+  <div class="paw-button-container">
+    <button id="pawTestButton" class="paw-test-button">
+      <img src="images/cat-paw-binary.png" alt="Paw Print" class="paw-button-image">
+    </button>
+    <p class="paw-button-label">Test Paw Prints</p>
+  </div>
+  
+  <script>
+    // Function to create and animate a paw print
+    function createPawPrint() {
+      console.log('Creating a paw print');
+      // Create paw print element
+      const pawPrint = document.createElement('div');
+      pawPrint.className = 'paw-print';
+      console.log('Created paw print element with class:', pawPrint.className);
+      
+      // Random position
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+      pawPrint.style.left = startX + 'px';
+      pawPrint.style.top = startY + 'px';
+      console.log('Position set to:', startX, startY);
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
+      pawPrint.style.transform = `rotate(${rotation}deg)`;
+      console.log('Rotation set to:', rotation);
+      
+      // Random animation
+      const animations = ['walkDiagonal', 'walkHorizontal', 'walkVertical'];
+      const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+      pawPrint.style.animation = `${randomAnimation} 3s linear forwards`;
+      console.log('Animation set to:', randomAnimation);
+      
+      // Add to page
+      document.body.appendChild(pawPrint);
+      console.log('Paw print added to page');
+      
+      // Remove element after animation completes
+      setTimeout(() => {
+        console.log('Removing paw print');
+        pawPrint.remove();
+      }, 3000);
+    }
+    
+    // Function to start the paw print animation sequence
+    function startPawPrints() {
+      console.log('Creating paw prints');
+      // Create 3-5 paw prints in quick succession
+      const numPrints = Math.floor(Math.random() * 3) + 3;
+      console.log('Number of prints to create:', numPrints);
+      for (let i = 0; i < numPrints; i++) {
+        setTimeout(() => {
+          createPawPrint();
+        }, i * 300); // Stagger the prints by 300ms
+      }
+    }
+    
+    // Add event listener for paw print test button
+    // Directly attach event listener since script is at bottom of page
+    const pawTestButton = document.getElementById('pawTestButton');
+    if (pawTestButton) {
+      pawTestButton.addEventListener('click', () => {
+        console.log('Paw print test button clicked');
+        startPawPrints();
+      });
+    } else {
+      console.error('Paw test button not found');
+    }
+  </script>
+</body>
+</html>
