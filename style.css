@@ -238,3 +238,43 @@ p {
 .fortune-message button:hover {
   background-color: #c08a8a;
 }
+
+/* Meow Button Styles */
+.meow-button-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.meow-button {
+  background-color: #f9f3f0;
+  border: 2px solid #d89a9a;
+  border-radius: 50%; /* Makes it circular */
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meow-button:hover {
+  background-color: #d89a9a;
+  transform: scale(1.1);
+}
+
+.meow-text {
+  font-family: 'Cinzel Decorative', serif;
+  color: #d89a9a;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.meow-button-label {
+  font-family: 'Cinzel Decorative', serif;
+  color: #d89a9a;
+  font-weight: 600;
+  margin-top: 10px;
+}

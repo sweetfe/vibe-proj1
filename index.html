@@ -64,6 +64,19 @@
   <p id="fortuneText"></p>
   <button id="closeFortune">Close</button>
 </div>
+
+<!-- Meow Button -->
+<div class="meow-button-container">
+  <button id="meowButton" class="meow-button">
+    <span class="meow-text">Meow</span>
+  </button>
+  <p class="meow-button-label">Meow</p>
+</div>
+
+<!-- Audio element for meow sound -->
+<audio id="meowSound" preload="auto">
+  <!-- Audio source will be added when file is available -->
+</audio>
  
 <script>
   // Function to create and animate a paw print
@@ -196,6 +209,32 @@
     });
   } else {
     console.error('Fortune cat elements not found');
+  }
+  
+  // Add event listener for meow button
+  const meowButton = document.getElementById('meowButton');
+  const meowSound = document.getElementById('meowSound');
+  
+  if (meowButton && meowSound) {
+    meowButton.addEventListener('click', () => {
+      console.log('Meow button clicked');
+      
+      // Check if audio source is available
+      if (meowSound.src) {
+        // Reset audio to start
+        meowSound.currentTime = 0;
+        // Play the meow sound
+        meowSound.play().catch(error => {
+          console.error('Error playing meow sound:', error);
+        });
+      } else {
+        console.log('No meow sound file available yet');
+        // For now, just log that the button was clicked
+        alert('Meow! (Audio file coming soon)');
+      }
+    });
+  } else {
+    console.error('Meow button or audio element not found');
   }
 </script>
 </body>
