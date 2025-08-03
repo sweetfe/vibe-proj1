@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Test</title>
+  <style>
+    .paw-test-button {
+      background-color: #f9f3f0;
+      border: 2px solid #d89a9a;
+      border-radius: 50%; /* Makes it circular */
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .paw-test-button:hover {
+      background-color: #d89a9a;
+      transform: scale(1.1);
+    }
+    
+    .paw-button-image {
+      width: 50px;
+      height: 50px;
+      display: block;
+    }
+    
+    .paw-button-label {
+      font-family: 'Cinzel Decorative', serif;
+      color: #d89a9a;
+      font-weight: 600;
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    .paw-print {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background-image: url('./images/pinkcatpaw4walking.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.7;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    
+    /* Animation for paw prints walking diagonally */
+    @keyframes walkDiagonal {
+      0% {
+        transform: translate(0, 0);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(100px, 100px);
+        opacity: 0;
+      }
+    }
+    
+    /* Animation for paw prints walking horizontally */
+    @keyframes walkHorizontal {
+      0% {
+        transform: translate(0, 0);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(150px, 0);
+        opacity: 0;
+      }
+    }
+    
+    /* Animation for paw prints walking vertically */
+    @keyframes walkVertical {
+      0% {
+        transform: translate(0, 0);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(0, 150px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Button Test</h1>
+  
+  <!-- Paw Print Test Button -->
+  <div style="text-align: center; margin: 30px 0;">
+    <button id="pawTestButton" class="paw-test-button">
+      <img src="images/pinkcatpaw4walking.png" alt="Paw Print" class="paw-button-image">
+    </button>
+    <p class="paw-button-label">Test Paw Prints</p>
+  </div>
+  
+  <div style="text-align: center; margin: 20px 0;">
+    <button id="testButton">Test Create Paw Print</button>
+  </div>
+  
+  <div id="debug" style="background-color: #f0f0f0; padding: 10px; margin: 20px 0; font-family: monospace;"></div>
+  
+  <script>
+    // Debug function
+    function debug(message) {
+      const debugElement = document.getElementById('debug');
+      debugElement.innerHTML += message + '<br>';
+      console.log(message);
+    }
+    
+    // Function to create and animate a paw print
+    function createPawPrint() {
+      debug('Creating a paw print');
+      
+      // Create paw print element
+      const pawPrint = document.createElement('div');
+      pawPrint.className = 'paw-print';
+      debug('Created paw print element with class: ' + pawPrint.className);
+      
+      // Random position
+      const startX = Math.random() * (window.innerWidth - 50);
+      const startY = Math.random() * (window.innerHeight - 50);
+      pawPrint.style.left = startX + 'px';
+      pawPrint.style.top = startY + 'px';
+      debug('Position set to: ' + startX + ', ' + startY);
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
+      pawPrint.style.transform = `rotate(${rotation}deg)`;
+      debug('Rotation set to: ' + rotation);
+      
+      // Random animation
+      const animations = ['walkDiagonal', 'walkHorizontal', 'walkVertical'];
+      const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+      pawPrint.style.animation = `${randomAnimation} 3s linear forwards`;
+      debug('Animation set to: ' + randomAnimation);
+      
+      // Add to page
+      document.body.appendChild(pawPrint);
+      debug('Paw print added to page');
+      
+      // Remove element after animation completes
+      setTimeout(() => {
+        debug('Removing paw print');
+        if (pawPrint.parentNode) {
+          pawPrint.parentNode.removeChild(pawPrint);
+        }
+      }, 3000);
+    }
+    
+    // Function to start the paw print animation sequence
+    function startPawPrints() {
+      debug('Creating paw prints sequence');
+      
+      // Create 3-5 paw prints in quick succession
+      const numPrints = Math.floor(Math.random() * 3) + 3;
+      debug('Number of prints to create: ' + numPrints);
+      
+      for (let i = 0; i < numPrints; i++) {
+        setTimeout(() => {
+          createPawPrint();
+        }, i * 300); // Stagger the prints by 300ms
+      }
+    }
+    
+    // Add event listener for paw print test button
+    debug('Setting up button event listener');
+    document.addEventListener('DOMContentLoaded', () => {
+      const pawTestButton = document.getElementById('pawTestButton');
+      debug('Button element found: ' + !!pawTestButton);
+      
+      if (pawTestButton) {
+        pawTestButton.addEventListener('click', () => {
+          debug('Paw print test button clicked');
+          startPawPrints();
+        });
+        debug('Event listener attached successfully');
+      } else {
+        debug('ERROR: Paw test button not found');
+      }
+      
+      // Add event listener for test button
+      const testButton = document.getElementById('testButton');
+      if (testButton) {
+        testButton.addEventListener('click', () => {
+          debug('Test button clicked');
+          createPawPrint();
+        });
+      }
+    });
+    
+    // Initial debug message
+    debug('Page loaded and debug system initialized');
+  </script>
+</body>
+</html>
