@@ -43,20 +43,31 @@
 </div>
 </br>
  
-<!-- Paw Print Button -->
-<div class="paw-button-container">
-  <button id="pawTestButton" class="paw-test-button">
-    <img src="images/pinkcatpaw4walking.png" alt="Paw Print" class="paw-button-image">
-  </button>
-  <p class="paw-button-label">Paw Prints</p>
-</div>
+<!-- Interactive Buttons Container -->
+<div class="buttons-container">
+  <!-- Paw Print Button -->
+  <div class="button-wrapper">
+    <button id="pawTestButton" class="interactive-button">
+      <img src="images/pinkcatpaw4walking.png" alt="Paw Print" class="button-image">
+    </button>
+    <p class="button-label">Paw Prints</p>
+  </div>
 
-<!-- Fortune Cat Button -->
-<div class="fortune-cat-container">
-  <button id="fortuneCatButton" class="fortune-cat-button">
-    <img src="images/MallaHelper.png" alt="Fortune Cat" class="fortune-cat-image">
-  </button>
-  <p class="fortune-cat-label">Fortune Cat</p>
+  <!-- Fortune Cat Button -->
+  <div class="button-wrapper">
+    <button id="fortuneCatButton" class="interactive-button">
+      <img src="images/MallaHelper.png" alt="Fortune Cat" class="button-image">
+    </button>
+    <p class="button-label">Fortune Cat</p>
+  </div>
+
+  <!-- Meow Button -->
+  <div class="button-wrapper">
+    <button id="meowButton" class="interactive-button">
+      <img src="images/pinkcatpaw4walking.png" alt="Meow" class="button-image">
+    </button>
+    <p class="button-label">Meow</p>
+  </div>
 </div>
 
 <!-- Fortune Message Display -->
@@ -65,17 +76,10 @@
   <button id="closeFortune">Close</button>
 </div>
 
-<!-- Meow Button -->
-<div class="meow-button-container">
-  <button id="meowButton" class="meow-button">
-    <span class="meow-text">Meow</span>
-  </button>
-  <p class="meow-button-label">Meow</p>
-</div>
-
 <!-- Audio element for meow sound -->
 <audio id="meowSound" preload="auto">
-  <!-- Audio source will be added when file is available -->
+  <source src="images/sounds/catnapped.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
  
 <script>
@@ -219,19 +223,12 @@
     meowButton.addEventListener('click', () => {
       console.log('Meow button clicked');
       
-      // Check if audio source is available
-      if (meowSound.src) {
-        // Reset audio to start
-        meowSound.currentTime = 0;
-        // Play the meow sound
-        meowSound.play().catch(error => {
-          console.error('Error playing meow sound:', error);
-        });
-      } else {
-        console.log('No meow sound file available yet');
-        // For now, just log that the button was clicked
-        alert('Meow! (Audio file coming soon)');
-      }
+      // Reset audio to start
+      meowSound.currentTime = 0;
+      // Play the meow sound
+      meowSound.play().catch(error => {
+        console.error('Error playing meow sound:', error);
+      });
     });
   } else {
     console.error('Meow button or audio element not found');
