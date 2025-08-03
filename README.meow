@@ -1,0 +1,44 @@
+# Meow Sound Implementation
+
+This file explains how to add a real meow sound to the Meow button.
+
+## Current Implementation
+
+The Meow button is currently implemented with placeholder functionality that shows an alert when clicked, since no audio file is available yet.
+
+## Adding a Real Meow Sound
+
+To add a real meow sound:
+
+1. Obtain a meow sound file in MP3, WAV, or OGG format
+2. Place the file in the `sounds/` directory (create the directory if it doesn't exist)
+3. Update the `index.html` file to add the source to the audio element:
+
+```html
+<!-- Audio element for meow sound -->
+<audio id="meowSound" preload="auto">
+  <source src="sounds/meow.mp3" type="audio/mpeg">
+  <!-- Add additional sources for browser compatibility -->
+  <source src="sounds/meow.wav" type="audio/wav">
+  <source src="sounds/meow.ogg" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
+```
+
+4. The JavaScript functionality is already implemented to play the sound when the button is clicked
+
+## Sound File Recommendations
+
+- Keep the file size small for fast loading
+- Use a clear, recognizable cat meow sound
+- Consider using a free sound from sites like:
+  - Freesound.org
+  - Zapsplat.com
+  - Soundbible.com
+
+## Technical Details
+
+The implementation uses the HTML5 Audio API:
+- `audioElement.play()` to play the sound
+- Error handling for browsers that don't support audio
+- Preloading for better user experience
