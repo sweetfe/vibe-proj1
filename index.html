@@ -43,12 +43,26 @@
 </div>
 </br>
  
-<!-- Paw Print Test Button -->
+<!-- Paw Print Button -->
 <div class="paw-button-container">
   <button id="pawTestButton" class="paw-test-button">
     <img src="images/pinkcatpaw4walking.png" alt="Paw Print" class="paw-button-image">
   </button>
-  <p class="paw-button-label">Test Paw Prints</p>
+  <p class="paw-button-label">Paw Prints</p>
+</div>
+
+<!-- Fortune Cat Button -->
+<div class="fortune-cat-container">
+  <button id="fortuneCatButton" class="fortune-cat-button">
+    <img src="images/MallaHelper.png" alt="Fortune Cat" class="fortune-cat-image">
+  </button>
+  <p class="fortune-cat-label">Fortune Cat</p>
+</div>
+
+<!-- Fortune Message Display -->
+<div id="fortuneMessage" class="fortune-message" style="display: none;">
+  <p id="fortuneText"></p>
+  <button id="closeFortune">Close</button>
 </div>
  
 <script>
@@ -136,6 +150,52 @@
     });
   } else {
     console.error('Paw test button not found');
+  }
+  
+  // Feline wisdom messages
+  const felineWisdom = [
+    "Purrs and cuddles are the best medicine.",
+    "Curiosity didn't kill this cat - it made me wiser!",
+    "Nap often, nap well, nap everywhere.",
+    "The best way to steal someone's heart is with gentle head bumps.",
+    "Patience is a virtue, especially when waiting for treats.",
+    "Sunbeams are nature's gift to cats.",
+    "Always land perfectly after leaping from impossible heights.",
+    "The cardboard box is mightier than the throne.",
+    "Rule with gentle paws and a soft purr.",
+    "Nine lives mean nine chances to be fabulous.",
+    "Hunt small things, ignore big problems.",
+    "The best conversations happen at 3 AM.",
+    "Flexibility is key - especially when fitting in small boxes.",
+    "Trust your whiskers - they know the way.",
+    "Elegance is in the way you walk away from trouble."
+  ];
+  
+  // Add event listener for fortune cat button
+  const fortuneCatButton = document.getElementById('fortuneCatButton');
+  const fortuneMessage = document.getElementById('fortuneMessage');
+  const fortuneText = document.getElementById('fortuneText');
+  const closeFortune = document.getElementById('closeFortune');
+  
+  if (fortuneCatButton && fortuneMessage && fortuneText && closeFortune) {
+    fortuneCatButton.addEventListener('click', () => {
+      console.log('Fortune cat button clicked');
+      
+      // Get random wisdom message
+      const randomIndex = Math.floor(Math.random() * felineWisdom.length);
+      const wisdom = felineWisdom[randomIndex];
+      
+      // Display the message
+      fortuneText.textContent = wisdom;
+      fortuneMessage.style.display = 'block';
+    });
+    
+    // Add event listener for close button
+    closeFortune.addEventListener('click', () => {
+      fortuneMessage.style.display = 'none';
+    });
+  } else {
+    console.error('Fortune cat elements not found');
   }
 </script>
 </body>
