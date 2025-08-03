@@ -21,8 +21,8 @@
       console.log('Created paw print element with class:', pawPrint.className);
       
       // Random position
-      const startX = Math.random() * window.innerWidth;
-      const startY = Math.random() * window.innerHeight;
+      const startX = Math.random() * (window.innerWidth - 150);
+      const startY = Math.random() * (window.innerHeight - 150);
       pawPrint.style.left = startX + 'px';
       pawPrint.style.top = startY + 'px';
       console.log('Position set to:', startX, startY);
