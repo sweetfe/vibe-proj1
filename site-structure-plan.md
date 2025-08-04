@@ -34,6 +34,16 @@
 - Includes placeholder functionality with alert until audio file is added
 - README.meow file provides instructions for adding real meow sound
 
+### Adopt a Cat Button
+- Added a circular button with "Adopt a Kitty" text
+- Button opens a cat browsing interface when clicked
+- Users can browse through multiple cats using navigation arrows
+- Each cat has an image, name, and personality description
+- Users can adopt a cat by clicking the "Adopt" button
+- Displays adoption certificate with cat image, name, and personality
+- Includes printable adoption certificate
+- Uses free-to-use cat images from Pexels
+
 ### Image Management
 - Replaced problematic `cat-paw.png` (base64 text file) with proper binary image
 - Added `pinkcatpaw4walking.png` as the main paw print image
@@ -271,6 +281,171 @@
     transform: translate(0, 750px);
     opacity: 0;
   }
+}
+```
+
+### Adoption Certificate
+```css
+.adoption-certificate {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f3f0;
+  border: 3px solid #d89a9a;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1001;
+  text-align: center;
+  max-width: 500px;
+  width: 80%;
+  display: none;
+}
+
+.certificate-content h2 {
+  color: #d89a9a;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.certificate-content h3 {
+  color: #d89a9a;
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+.certificate-content h1 {
+  color: #d89a9a;
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.certificate-content p {
+  color: #333;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.certificate-cat-image {
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+  margin: 15px auto;
+  display: block;
+}
+
+#adoptionCertificate button {
+  background-color: #d89a9a;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: 'Cinzel Decorative', serif;
+  color: white;
+  font-size: 16px;
+}
+
+#adoptionCertificate button:hover {
+  background-color: #c08a8a;
+}
+```
+
+### Cat Browser
+```css
+.cat-browser {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f3f0;
+  border: 3px solid #d89a9a;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1001;
+  text-align: center;
+  max-width: 600px;
+  width: 80%;
+  display: none;
+}
+
+.browser-content h2 {
+  color: #d89a9a;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.browser-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.nav-button {
+  background-color: #d89a9a;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-family: 'Cinzel Decorative', serif;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background-color: #c08a8a;
+}
+
+.cat-display {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.browser-cat-image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin: 15px auto;
+  display: block;
+}
+
+.cat-display h3 {
+  color: #d89a9a;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.cat-display p {
+  color: #333;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.browser-buttons {
+  margin-top: 20px;
+}
+
+.browser-buttons button {
+  background-color: #d89a9a;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-family: 'Cinzel Decorative', serif;
+  color: white;
+  font-size: 16px;
+}
+
+.browser-buttons button:hover {
+  background-color: #c08a8a;
 }
 ```
 

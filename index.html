@@ -15,7 +15,7 @@
   <img src="images/MallaCurled.png" alt="Malla being cozy">
  
 
-<nav>
+<nav style="text-align: center;">
   <a href="index.html">Main</a> |
   <a href="about.html">About Her Furriness</a> |
   <a href="name.html">What's In A Name?</a>
@@ -37,7 +37,7 @@
     <h3><a href="pet-pet-bite.html">Pet, pet, BITE</a></h3>
   </div>
   <div class="story-box">
-    <img src="https://images.pexels.com/photos/10470045/pexels-photo-10470045.jpeg" alt="Royal rescued cat" class="story-preview">
+    <img src="images/RoyalMalla.png" alt="Royal rescued cat" class="story-preview">
     <h3><a href="catnapped.html">CatNapped</a></h3>
   </div>
 </div>
@@ -67,6 +67,14 @@
       <img src="images/pinkcatpaw4walking.png" alt="Meow" class="button-image">
     </button>
     <p class="button-label">Meow</p>
+  </div>
+  
+  <!-- Adopt a Cat Button -->
+  <div class="button-wrapper">
+    <button id="adoptCatButton" class="interactive-button">
+      <img src="images/pinkcatpaw4walking.png" alt="Adopt a Cat" class="button-image">
+    </button>
+    <p class="button-label">Adopt a Kitty</p>
   </div>
 </div>
 
@@ -232,6 +240,204 @@
     });
   } else {
     console.error('Meow button or audio element not found');
+  }
+  
+  // Cat adoption data
+  const catsData = [
+    {
+      name: "Whiskers",
+      personality: "Playful and curious, loves chasing laser pointers",
+      imageUrl: "https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg"
+    },
+    {
+      name: "Luna",
+      personality: "Gentle and affectionate, enjoys cuddling on laps",
+      imageUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"
+    },
+    {
+      name: "Oliver",
+      personality: "Independent and clever, excellent at puzzle toys",
+      imageUrl: "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg"
+    },
+    {
+      name: "Bella",
+      personality: "Social and vocal, always ready to greet visitors",
+      imageUrl: "images/adopt/bellapexels-marcus-pinho-328812-923360.jpg"
+    },
+    {
+      name: "Simba",
+      personality: "Regal and confident, enjoys high perches",
+      imageUrl: "https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg"
+    },
+    {
+      name: "Mittens",
+      personality: "Sweet and gentle, loves soft blankets",
+      imageUrl: "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg"
+    },
+    {
+      name: "Tiger",
+      personality: "Energetic and adventurous, loves exploring",
+      imageUrl: "https://images.pexels.com/photos/2071882/pexels-photo-2071882.jpeg"
+    },
+    {
+      name: "Cleo",
+      personality: "Graceful and elegant, enjoys quiet moments",
+      imageUrl: "https://images.pexels.com/photos/177809/pexels-photo-177809.jpeg"
+    },
+    {
+      name: "Shadow",
+      personality: "Mysterious and stealthy, loves hiding in boxes",
+      imageUrl: "images/adopt/shadow-pexels-kerber-774731.jpg"
+    },
+    {
+      name: "Patches",
+      personality: "Friendly and outgoing, enjoys meeting new people",
+      imageUrl: "https://images.pexels.com/photos/127027/pexels-photo-127027.jpeg"
+    },
+    {
+      name: "Smokey",
+      personality: "Calm and wise, enjoys sunny spots by the window",
+      imageUrl: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg"
+    },
+    {
+      name: "Princess",
+      personality: "Dignified and graceful, loves luxury and comfort",
+      imageUrl: "images/adopt/princesspexels-peng-louis-587527-1643457.jpg"
+    },
+    {
+      name: "Ginger",
+      personality: "Spunky and spirited, always up for an adventure",
+      imageUrl: "images/adopt/gingerpexels-koprivakart-5759999.jpg"
+    },
+    {
+      name: "Midnight",
+      personality: "Nocturnal and active, loves playing during the night",
+      imageUrl: "https://images.pexels.com/photos/1056252/pexels-photo-1056252.jpeg"
+    },
+    {
+      name: "Snowball",
+      personality: "Pure and innocent, enjoys gentle play and soft cuddles",
+      imageUrl: "images/adopt/snowball-pexels-emhopper-1084425.jpg"
+    }
+  ];
+  
+  // Current cat index for browsing
+  let currentCatIndex = 0;
+  
+  // Function to get a random cat
+  function getRandomCat() {
+    const randomIndex = Math.floor(Math.random() * catsData.length);
+    return catsData[randomIndex];
+  }
+  
+  // Function to display cat browser
+  function displayCatBrowser() {
+    // Create browser element if it doesn't exist
+    let browser = document.getElementById('catBrowser');
+    if (!browser) {
+      browser = document.createElement('div');
+      browser.id = 'catBrowser';
+      browser.className = 'cat-browser';
+      document.body.appendChild(browser);
+    }
+    
+    // Fill browser with cat information
+    const cat = catsData[currentCatIndex];
+    browser.innerHTML = `
+      <div class="browser-content">
+        <h2>Find Your Perfect Kitty</h2>
+        <div class="browser-navigation">
+          <button id="prevCat" class="nav-button">←</button>
+          <div class="cat-display">
+            <img src="${cat.imageUrl}" alt="${cat.name}" class="browser-cat-image">
+            <h3>${cat.name}</h3>
+            <p>${cat.personality}</p>
+          </div>
+          <button id="nextCat" class="nav-button">→</button>
+        </div>
+        <div class="browser-buttons">
+          <button id="closeBrowser">Close</button>
+          <button id="adoptCurrentCat">Adopt ${cat.name}!</button>
+        </div>
+      </div>
+    `;
+    
+    // Show the browser
+    browser.style.display = 'block';
+    
+    // Add event listeners for browser buttons
+    document.getElementById('closeBrowser').addEventListener('click', () => {
+      browser.style.display = 'none';
+    });
+    
+    document.getElementById('adoptCurrentCat').addEventListener('click', () => {
+      browser.style.display = 'none';
+      displayAdoptionCertificate(cat);
+    });
+    
+    document.getElementById('prevCat').addEventListener('click', () => {
+      currentCatIndex = (currentCatIndex - 1 + catsData.length) % catsData.length;
+      displayCatBrowser();
+    });
+    
+    document.getElementById('nextCat').addEventListener('click', () => {
+      currentCatIndex = (currentCatIndex + 1) % catsData.length;
+      displayCatBrowser();
+    });
+  }
+  
+  // Function to display adoption certificate
+  function displayAdoptionCertificate(cat) {
+    // Create certificate element if it doesn't exist
+    let certificate = document.getElementById('adoptionCertificate');
+    if (!certificate) {
+      certificate = document.createElement('div');
+      certificate.id = 'adoptionCertificate';
+      certificate.className = 'adoption-certificate';
+      document.body.appendChild(certificate);
+    }
+    
+    // Fill certificate with cat information
+    certificate.innerHTML = `
+      <div class="certificate-content">
+        <h2>Cat Adoption Certificate</h2>
+        <img src="${cat.imageUrl}" alt="${cat.name}" class="certificate-cat-image">
+        <h3>This certifies that you have adopted</h3>
+        <h1>${cat.name}</h1>
+        <p>Personality: ${cat.personality}</p>
+        <p>Congratulations on your new feline friend!</p>
+        <button id="closeCertificate">Close</button>
+        <button id="printCertificate">Print</button>
+      </div>
+    `;
+    
+    // Show the certificate
+    certificate.style.display = 'block';
+    
+    // Add event listeners for certificate buttons
+    document.getElementById('closeCertificate').addEventListener('click', () => {
+      certificate.style.display = 'none';
+    });
+    
+    document.getElementById('printCertificate').addEventListener('click', () => {
+      window.print();
+    });
+  }
+  
+  // Add event listener for adopt cat button
+  const adoptCatButton = document.getElementById('adoptCatButton');
+  if (adoptCatButton) {
+    adoptCatButton.addEventListener('click', () => {
+      console.log('Adopt a Cat button clicked');
+      
+      // Reset to random cat index
+      currentCatIndex = Math.floor(Math.random() * catsData.length);
+      
+      // Display cat browser
+      displayCatBrowser();
+    });
+  } else {
+    console.error('Adopt Cat button not found');
   }
 </script>
 </body>
