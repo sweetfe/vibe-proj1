@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - My Cat's Kingdom</title>
+  <link rel="icon" type="image/png" href="images/tab—Pngtree—adorable smiling pink cat face_18241534.png">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,9 +16,18 @@
   <p>Interested in adopting one of our feline friends? Have questions about our cats? Want to learn more about Malla's adventures? Reach out to us using the form below!</p>
   
   <form action="https://formspree.io/f/your-id" method="POST">
-    <label>Name: <input type="text" name="name" required></label>
-    <label>Email: <input type="email" name="email" required></label>
-    <label>Why do you want to adopt? <textarea name="message"></textarea></label>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="message">Why do you want to adopt?</label>
+      <textarea id="message" name="message" rows="5" cols="50"></textarea>
+    </div>
     <button type="submit">Send</button>
   </form>
   
