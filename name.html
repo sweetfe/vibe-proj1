@@ -14,9 +14,10 @@
   <h1>What's In A Name?</h1>
  <img src="images/MallaHelper.png" alt="Malla being helpful" class="small-image">
     <nav style="text-align: center;">
-    <a href="about.html">About Her Furriness</a> |
-    <a href="contact.html">Contact</a>
-  </nav>
+      <a href="about.html">About Her Furriness</a> |
+      <a href="contact.html">Contact</a>
+      <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </nav>
   
   <h2>Wookie Name:</h2>
   <p>Mallatobuck</p>
@@ -99,6 +100,25 @@
       // Initial delay of 30 seconds to 1 minute before first animation
       const initialDelay = Math.floor(Math.random() * 30000) + 30000; // 30-60 seconds in ms
       setTimeout(startAnimationCycle, initialDelay);
+    });
+  </script>
+  
+  <script>
+    // Dark mode toggle function
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      
+      // Save preference to localStorage
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+    
+    // Check for saved dark mode preference
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedDarkMode = localStorage.getItem('darkMode');
+      if (savedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+      }
     });
   </script>
 </body>

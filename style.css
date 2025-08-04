@@ -411,3 +411,127 @@ p {
 .browser-buttons button:hover {
   background-color: #c08a8a;
 }
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 8px;
+  border: 1px solid #d89a9a;
+  border-radius: 4px;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+/* Light Mode Defaults */
+body {
+  background: white;
+  color: black;
+}
+
+/* Dark Mode Overrides */
+.dark-mode {
+  background: #111;
+  color: #eee;
+}
+
+.dark-mode a {
+  color: #9fd;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea {
+  background: #333;
+  color: #eee;
+  border-color: #9fd;
+}
+
+.dark-mode .interactive-button {
+  background-color: #333;
+  border-color: #9fd;
+}
+
+.dark-mode .interactive-button:hover {
+  background-color: #444;
+}
+
+.dark-mode .button-label {
+  color: #9fd;
+}
+
+.dark-mode .fortune-message {
+  background-color: #333;
+  border-color: #9fd;
+}
+
+.dark-mode .fortune-message p {
+  color: #9fd;
+}
+
+.dark-mode .adoption-certificate {
+  background-color: #333;
+  border-color: #9fd;
+}
+
+.dark-mode .certificate-content h2,
+.dark-mode .certificate-content h3,
+.dark-mode .certificate-content h1 {
+  color: #9fd;
+}
+
+.dark-mode .certificate-content p {
+  color: #eee;
+}
+
+.dark-mode #adoptionCertificate button {
+  background-color: #9fd;
+  color: #111;
+}
+
+.dark-mode #adoptionCertificate button:hover {
+  background-color: #7db;
+}
+
+.dark-mode .cat-browser {
+  background-color: #333;
+  border-color: #9fd;
+}
+
+.dark-mode .browser-content h2 {
+  color: #9fd;
+}
+
+.dark-mode .cat-display h3 {
+  color: #9fd;
+}
+
+.dark-mode .cat-display p {
+  color: #eee;
+}
+
+.dark-mode .browser-buttons button {
+  background-color: #9fd;
+  color: #111;
+}
+
+.dark-mode .browser-buttons button:hover {
+  background-color: #7db;
+}
+
+.dark-mode .nav-button {
+  background-color: #9fd;
+  color: #111;
+}
+
+.dark-mode .nav-button:hover {
+  background-color: #7db;
+}

@@ -18,6 +18,7 @@
     <a href="about.html">About Her Furriness</a> |
     <a href="name.html">What's In A Name?</a> |
     <a href="contact.html">Contact</a>
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
   </nav>
   
   <p>One of Malla's favorite pastimes is investigating the mysterious creatures that dwell in the depths of the kitchen sink. These elusive monsters only appear when the water is running, creating whirlpools and splashing about in what can only be described as their natural habitat.</p>
@@ -99,6 +100,25 @@
         console.log('Starting animation cycle');
         startAnimationCycle();
       }, initialDelay);
+    });
+  </script>
+  
+  <script>
+    // Dark mode toggle function
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      
+      // Save preference to localStorage
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+    
+    // Check for saved dark mode preference
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedDarkMode = localStorage.getItem('darkMode');
+      if (savedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+      }
     });
   </script>
 </body>
