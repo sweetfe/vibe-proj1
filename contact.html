@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - My Cat's Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="index.html"><img src="images/BienvenidosaMallasWorld.png" alt="Home" style="height: 190px;"></a>
+  
+  <h1>Contact Malla's Kingdom</h1>
+  
+  <p>Interested in adopting one of our feline friends? Have questions about our cats? Want to learn more about Malla's adventures? Reach out to us using the form below!</p>
+  
+  <form action="https://formspree.io/f/your-id" method="POST">
+    <label>Name: <input type="text" name="name" required></label>
+    <label>Email: <input type="email" name="email" required></label>
+    <label>Why do you want to adopt? <textarea name="message"></textarea></label>
+    <button type="submit">Send</button>
+  </form>
+  
+  <nav style="text-align: center;">
+    <a href="about.html">About Her Furriness</a> |
+    <a href="name.html">What's In A Name?</a>
+  </nav>
+  
+  <script>
+    // Function to create and animate a paw print
+    function createPawPrint() {
+      console.log('Creating a paw print');
+      // Create paw print element
+      const pawPrint = document.createElement('div');
+      pawPrint.className = 'paw-print';
+      console.log('Created paw print element with class:', pawPrint.className);
+      
+      // Random position
+      const startX = Math.random() * (window.innerWidth - 150);
+      const startY = Math.random() * (window.innerHeight - 150);
+      pawPrint.style.left = startX + 'px';
+      pawPrint.style.top = startY + 'px';
+      console.log('Position set to:', startX, startY);
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
+      pawPrint.style.transform = `rotate(${rotation}deg)`;
+      console.log('Rotation set to:', rotation);
+      
+      // Random animation
+      const animations = ['walkDiagonal', 'walkHorizontal', 'walkVertical'];
+      const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+      pawPrint.style.animation = `${randomAnimation} 3s linear forwards`;
+      console.log('Animation set to:', randomAnimation);
+      
+      // Add to page
+      document.body.appendChild(pawPrint);
+      console.log('Paw print added to page');
+      
+      // Remove element after animation completes
+      setTimeout(() => {
+        console.log('Removing paw print');
+        pawPrint.remove();
+      }, 3000);
+    }
+    
+    // Function to start the paw print animation sequence
+    function startPawPrints() {
+      console.log('Creating paw prints');
+      // Create 3-5 paw prints in quick succession
+      const numPrints = Math.floor(Math.random() * 3) + 3;
+      console.log('Number of prints to create:', numPrints);
+      for (let i = 0; i < numPrints; i++) {
+        setTimeout(() => {
+          createPawPrint();
+        }, i * 300); // Stagger the prints by 300ms
+      }
+    }
+    
+    // Start the animation cycle
+    function startAnimationCycle() {
+      console.log('Starting paw print animation cycle');
+      // Start first set of paw prints
+      startPawPrints();
+      
+      // Schedule next set of paw prints after a random delay (3-5 minutes)
+      const randomDelay = Math.floor(Math.random() * 120000) + 180000; // 3-5 minutes in ms
+      console.log('Next cycle scheduled in:', randomDelay, 'ms');
+      setTimeout(startAnimationCycle, randomDelay);
+    }
+    
+    // Start the animation cycle after the page loads
+    window.addEventListener('load', () => {
+      console.log('Page loaded, setting up paw print animation');
+      // Initial delay of 30 seconds to 1 minute before first animation
+      const initialDelay = Math.floor(Math.random() * 30000) + 30000; // 30-60 seconds in ms
+      console.log('Initial delay set to:', initialDelay, 'ms');
+      setTimeout(() => {
+        console.log('Starting animation cycle');
+        startAnimationCycle();
+      }, initialDelay);
+    });
+  </script>
+</body>
+</html>
